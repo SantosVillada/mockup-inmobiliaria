@@ -1,0 +1,36 @@
+# Dependencias
+node_modules/
+.vendor/
+
+# Entornos
+.env
+.env.local
+.env.*.local
+
+# Build / dist
+dist/
+build/
+out/
+next-env.d.ts
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+
+# Cobertura
+coverage/
+
+# Cache
+.cache/
+.tmp/
