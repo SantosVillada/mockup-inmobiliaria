@@ -74,7 +74,7 @@ export default function PerfilAgente({ agente, propiedad, contexto = "perfil", s
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`Consultar por WhatsApp a ${agente.nombre}`}
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#1da851]"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-whatsapp px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-whatsapp-strong"
             >
               <WhatsAppIcon size={18} />
               Consultá por WhatsApp

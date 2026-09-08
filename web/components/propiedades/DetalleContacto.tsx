@@ -21,7 +21,7 @@ export default function DetalleContacto({ propiedad, agente }: { propiedad: Prop
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`Consultar por WhatsApp a ${agente.nombre}`}
-          className="inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#1da851]"
+          className="inline-flex items-center justify-center gap-2 rounded-full bg-whatsapp px-5 py-3 text-sm font-semibold text-white transition hover:bg-whatsapp-strong"
         >
           <WhatsAppIcon size={18} />
           Consultá por WhatsApp
@@ -56,7 +56,7 @@ export default function DetalleContacto({ propiedad, agente }: { propiedad: Prop
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`Consultar por WhatsApp a ${agente.nombre}`}
-              className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-[#1da851]"
+              className="inline-flex items-center gap-2 rounded-full bg-whatsapp px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-whatsapp-strong"
             >
               <WhatsAppIcon size={16} />
               Contactar

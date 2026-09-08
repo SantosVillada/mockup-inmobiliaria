@@ -50,6 +50,10 @@
   --color-muted: var(--neutral-500);
   --color-primary: var(--brand-600);
   --color-accent: var(--accent-400);
+
+  /* Canal de WhatsApp (C-13) — color distintivo, centralizado */
+  --whatsapp: #25d366;
+  --whatsapp-strong: #1da851;
 }
 
 @theme inline {
@@ -92,6 +96,10 @@
   --color-error: var(--error);
   --color-error-strong: var(--error-strong);
   --color-error-soft: var(--error-soft);
+
+  /* Canal de WhatsApp */
+  --color-whatsapp: var(--whatsapp);
+  --color-whatsapp-strong: var(--whatsapp-strong);
 
   /* Tipografía */
   --font-display: var(--font-sora), ui-sans-serif, system-ui, sans-serif;

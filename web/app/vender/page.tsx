@@ -61,7 +61,7 @@ export default function VenderPage() {
                 href={wa}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-6 py-3 text-base font-semibold text-white transition hover:bg-[#1da851]"
+                className="inline-flex items-center gap-2 rounded-full bg-whatsapp px-6 py-3 text-base font-semibold text-white transition hover:bg-whatsapp-strong"
               >
                 <WhatsAppIcon size={18} />
                 Vendé tu propiedad
@@ -148,7 +148,7 @@ export default function VenderPage() {
                 href={wa}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-4 inline-flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#1da851]"
+                className="mt-4 inline-flex items-center gap-2 rounded-full bg-whatsapp px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-whatsapp-strong"
               >
                 <WhatsAppIcon size={18} />
                 Preferís coordinar por WhatsApp?
@@ -172,7 +172,7 @@ export default function VenderPage() {
       {/* CTA final */}
       <section className="pb-16">
         <Container>
-          <div className="rounded-3xl bg-brand-800 p-8 text-center text-white md:p-12">
+          <div className="rounded-2xl bg-brand-800 p-8 text-center text-white md:p-12">
             <h2 className="font-display text-[clamp(1.5rem,3vw,2.25rem)] font-semibold">Vendé tu propiedad hoy</h2>
             <p className="mx-auto mt-3 max-w-md text-white/75">Hablá con un asesor por WhatsApp y empezá en minutos.</p>
             <div className="mt-6 flex flex-wrap justify-center gap-3">
@@ -180,7 +180,7 @@ export default function VenderPage() {
                 href={wa}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-6 py-3 text-base font-semibold text-white transition hover:bg-[#1da851]"
+                className="inline-flex items-center gap-2 rounded-full bg-whatsapp px-6 py-3 text-base font-semibold text-white transition hover:bg-whatsapp-strong"
               >
                 <WhatsAppIcon size={18} />
                 Vendé tu propiedad

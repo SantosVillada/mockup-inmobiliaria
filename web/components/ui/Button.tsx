@@ -19,7 +19,7 @@ interface ButtonProps {
 }
 
 const base =
-  "inline-flex items-center justify-center gap-2 font-semibold transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400 disabled:cursor-not-allowed disabled:bg-neutral-200 disabled:text-neutral-500 select-none";
+  "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400 disabled:cursor-not-allowed disabled:bg-neutral-200 disabled:text-neutral-500 select-none";
 
 const variants: Record<Variant, string> = {
   primary:
@@ -31,7 +31,7 @@ const variants: Record<Variant, string> = {
   tertiary:
     "text-brand-600 bg-transparent hover:underline decoration-accent-400 underline-offset-4",
   whatsapp:
-    "bg-[#25D366] text-white hover:bg-[#1da851] hover:-translate-y-0.5 hover:shadow-md active:translate-y-0",
+    "bg-whatsapp text-white hover:bg-whatsapp-strong hover:-translate-y-0.5 hover:shadow-md active:translate-y-0",
 };
 
 const sizes: Record<Size, string> = {

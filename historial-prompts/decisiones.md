@@ -474,5 +474,35 @@ Usar identificadores tipo `DNN` (ej. `D01`, `D02`) para poder referenciarlas des
 
 ---
 
+## DVI — Decisiones del Director Visual (Agente 09)
+
+> Rango `DVI-NN`. Revisión global de coherencia visual de la FASE 5 contra `docs/branding/` y `docs/ux-ui/`.
+
+### DVI-01 — Botones pill (radio 999px)
+- **Fecha:** 2026-09-08 · **Tipo:** Visual / Coherencia
+- **Decisión:** Agregar `rounded-full` a la clase base del componente `Button` (`components/ui/Button.tsx`). Antes los botones no tenían radio definido y caían al valor por defecto del navegador.
+- **Motivo:** `docs/branding/estilo.md` §4 y `tokens.md` §7 definen botones **pill** (`--radius-pill: 999px`). La variante `tertiary` (link) no se ve afectada visualmente.
+- **Impacto:** Todos los CTAs (primario/secundario/acento/whatsapp) quedan pill, coherentes con la marca.
+
+### DVI-02 — Color de WhatsApp centralizado en tokens
+- **Fecha:** 2026-09-08 · **Tipo:** Visual / Mantenibilidad
+- **Decisión:** Crear tokens `--whatsapp` (#25D366) y `--whatsapp-strong` (#1DA851) en `globals.css` (`:root` + `@theme inline` como `--color-whatsapp` / `--color-whatsapp-strong`) y reemplazar los hex sueltos `bg-[#25D366]` / `hover:bg-[#1da851]` por `bg-whatsapp` / `hover:bg-whatsapp-strong` en todos los componentes y páginas (Button, ContactoBarra, WhatsAppWidget, PerfilAgente, DetalleContacto, Footer, TarjetaAgente, contacto, vender, agentes/[slug]).
+- **Motivo:** Regla de `tokens.md` §8 (tokens, nunca hex sueltos) y `estilo.md` §4 C-13. Centraliza el color del canal principal (DMK-03) para re-tematizarlo sin tocar componentes.
+- **Impacto:** Sin cambio visual; mejora mantenibilidad y cumple la regla de tokens.
+
+### DVI-03 — Logo: stroke usa `currentColor`
+- **Fecha:** 2026-09-08 · **Tipo:** Visual / Tokens
+- **Decisión:** En `components/ui/Logo.tsx`, el trazo del monograma pasa de `onDark ? "#FFFFFF" : "currentColor"` a siempre `currentColor`. El color lo resuelve la clase `text-white` (oscuro) / `text-brand-600` (claro) del contenedor SVG.
+- **Motivo:** Eliminar el hex suelto `#FFFFFF` (regla de tokens) manteniendo la variante correcta por fondo (DBR-09 / `logo.md` §3). Complementa `DQA-03` (punto dorado ya usaba tokens).
+- **Impacto:** Sin cambio visual; cumple la regla de tokens.
+
+### DVI-04 — Radios fuera de escala normalizados a 16px
+- **Fecha:** 2026-09-08 · **Tipo:** Visual / Coherencia
+- **Decisión:** Reemplazar `rounded-3xl` (24px) por `rounded-2xl` (16px) en los paneles grandes de CTA/estadísticas de `app/page.tsx`, `app/nosotros/page.tsx` y `app/vender/page.tsx`.
+- **Motivo:** `tokens.md` §3 define radios máx. `--radius-lg: 16px` (y `pill`). 24px quedaba fuera de la escala ("no inventar radios fuera de esta escala"). Las tarjetas ya usan `rounded-2xl` (16px).
+- **Impacto:** Alinea los paneles de marca con la escala de radios; sin impacto funcional.
+
+---
+
 ## Decisiones futuras (plantilla)
 - [Próxima decisión relevante aquí]

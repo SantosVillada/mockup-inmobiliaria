@@ -81,7 +81,7 @@ export default function Footer() {
               href={waLinkGeneral()}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-5 inline-flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#1da851]"
+              className="mt-5 inline-flex items-center gap-2 rounded-full bg-whatsapp px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-whatsapp-strong"
             >
               <WhatsAppIcon size={18} />
               {INSTITUCIONAL_WHATSAPP_DISPLAY}

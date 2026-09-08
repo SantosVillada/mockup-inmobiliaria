@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 import { NOMBRE_EMPRESA, TAGLINE } from "@/lib/constants";
 
 export function Monograma({ className, onDark = false }: { className?: string; onDark?: boolean }) {
-  const stroke = onDark ? "#FFFFFF" : "currentColor";
+  const stroke = "currentColor";
   const dot = onDark ? "var(--accent-300)" : "var(--accent-400)";
   return (
     <svg

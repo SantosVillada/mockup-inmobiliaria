@@ -189,7 +189,7 @@ export default function HomePage() {
       {/* CTA final + newsletter */}
       <section className="py-14 md:py-20">
         <Container>
-          <div className="overflow-hidden rounded-3xl bg-brand-800 p-8 text-white md:p-12">
+          <div className="overflow-hidden rounded-2xl bg-brand-800 p-8 text-white md:p-12">
             <div className="grid gap-8 md:grid-cols-2 md:items-center">
               <div>
                 <h2 className="font-display text-[clamp(1.5rem,3vw,2.25rem)] font-semibold leading-tight">

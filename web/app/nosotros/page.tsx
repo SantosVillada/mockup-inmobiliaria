@@ -80,7 +80,7 @@ export default function NosotrosPage() {
           </div>
         </section>
 
-        <section className="mt-16 rounded-3xl bg-brand-900 p-8 text-white md:p-12">
+        <section className="mt-16 rounded-2xl bg-brand-900 p-8 text-white md:p-12">
           <div className="grid grid-cols-2 gap-8 text-center md:grid-cols-4">
             <Stat value="+1.200" label="propiedades vendidas" onDark />
             <Stat value="15" label="años de experiencia" onDark />

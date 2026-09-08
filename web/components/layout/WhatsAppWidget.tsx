@@ -31,7 +31,7 @@ export default function WhatsAppWidget() {
       rel="noopener noreferrer"
       aria-label="Consultá por WhatsApp"
       className={cn(
-        "fixed bottom-5 right-5 z-30 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-all duration-300 hover:bg-[#1da851] hover:scale-105 md:hidden",
+        "fixed bottom-5 right-5 z-30 flex h-14 w-14 items-center justify-center rounded-full bg-whatsapp text-white shadow-lg transition-all duration-300 hover:bg-whatsapp-strong hover:scale-105 md:hidden",
         visible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0 pointer-events-none"
       )}
     >

@@ -111,7 +111,7 @@ export default async function PerfilAgentePage({ params }: PageProps) {
                     href={waLinkAgente(agente)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-4 inline-flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#1da851]"
+                    className="mt-4 inline-flex items-center gap-2 rounded-full bg-whatsapp px-5 py-2.5 text-sm font-semibold text-white hover:bg-whatsapp-strong"
                   >
                     Consultá por WhatsApp
                   </a>
