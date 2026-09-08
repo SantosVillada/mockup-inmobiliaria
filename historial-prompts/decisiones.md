@@ -131,5 +131,51 @@ Usar identificadores tipo `DNN` (ej. `D01`, `D02`) para poder referenciarlas des
 
 ---
 
+---
+
+## DBR — Decisiones de Branding (Agente 02)
+
+> Rango `DBR-NN`. Cada una referencia los documentos de diseño en `docs/branding/`.
+
+### DBR-01 — Marca de trabajo MORADA
+- **Fecha:** 2026-09-08 · **Tipo:** Identidad
+- **Decisión:** Nombre de trabajo **MORADA** (placeholder reemplazable). Tagline: "Encontrá tu morada."
+- **Motivo:** Necesidad de una marca para el mockup; término español elegante/literario que transmite hogar, exclusividad y cercanía. Reemplazable sin romper nada.
+
+### DBR-02 — Paleta azul petróleo + dorado champagne (60/30/10)
+- **Decisión:** Azul petróleo (`#174A75`) como color de marca y CTAs; dorado champagne (`#C7A55A`) como acento de exclusividad; neutros fríos como base. Proporción **60% neutros / 30% azul / 10% dorado**.
+- **Motivo:** Confianza + exclusividad + modernidad; regla conceptual de `layout.md` (primario=CTAs, neutro=fondo, acento=eyebrows/badges, semánticos verde/ámbar/rojo).
+- **Nota accesibilidad:** dorado solo decorativo/detalle; texto sobre claro usa `--accent-600`.
+
+### DBR-03 — Tipografía Sora + Inter
+- **Decisión:** **Sora** (display/títulos) + **Inter** (cuerpo/UI). Alternativas documentadas (Fraunces/Playfair Display, Manrope, DM Sans).
+- **Motivo:** Sora da modernidad+exclusividad en títulos; Inter da legibilidad y rendimiento en cuerpo. Regla UX/UI: máx. 2 familias.
+
+### DBR-04 — Logo monograma "M" (techo de casa)
+- **Decisión:** Símbolo = monograma "M" que se lee como techos de una casa + punto dorado (la puerta/lugar). Wordmark MORADA en Sora 600, mayúsculas, letter-spacing amplio. Variantes: color, monocromo azul, reverso (sobre oscuro), símbolo solo.
+- **Motivo:** Geometría mínima y premium; lectura inmediata de "hogar".
+
+### DBR-05 — Estilo visual moderno premium
+- **Decisión:** Tarjetas radio **16px** con sombras azules suaves; botones **pill**; iconos **line** (Lucide); fotografía real/arquitectónica con overlay sutil en zonas de texto; espaciado base **4px**.
+- **Motivo:** Suavidad, aire y detalles premium; coherencia con modernidad/tecnología.
+
+### DBR-06 — Tono español rioplatense
+- **Decisión:** Copy en **español rioplatense** (vos, "podés", "-tá"), cercano y directo; CTAs verbo-primero; sin jerga corporativa ni superlativos vacíos.
+- **Motivo:** Cercanía y confianza con la audiencia; el proyecto es en español.
+
+### DBR-07 — Tokens de marca consolidados
+- **Decisión:** `docs/branding/tokens.md` define variables CSS conceptuales (colores, tipografía, radios, sombras, espaciados, breakpoints) como **fuente única** para el Agente 03.
+- **Motivo:** Consistencia, facilidad de re-tematización y trabajo limpio del Frontend.
+
+### DBR-08 — Sombra de marca en azul oscuro
+- **Decisión:** Todas las sombras usan **azul oscuro** `rgba(10,31,51,…)`, nunca negro genérico.
+- **Motivo:** Refuerza la identidad de color y evita sombras "sucias".
+
+### DBR-09 — Reglas de contraste y superficie
+- **Decisión:** Nunca azul sobre azul; en fondos oscuros (hero/footer) los CTAs usan **dorado** o **blanco**. Texto sobre claro usa neutros 800/900.
+- **Motivo:** Accesibilidad (AA) y legibilidad.
+
+---
+
 ## Decisiones futuras (plantilla)
 - [Próxima decisión relevante aquí]
