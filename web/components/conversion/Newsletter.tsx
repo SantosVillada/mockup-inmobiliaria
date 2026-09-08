@@ -1,11 +1,12 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useId, useState, type FormEvent } from "react";
 import { cn } from "@/lib/utils";
 import Button from "@/components/ui/Button";
 import Icon from "@/components/ui/Icon";
 
 export default function Newsletter({ onDark = false }: { onDark?: boolean }) {
+  const inputId = useId();
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [error, setError] = useState("");
@@ -44,12 +45,12 @@ export default function Newsletter({ onDark = false }: { onDark?: boolean }) {
 
   return (
     <form onSubmit={handleSubmit} noValidate className="w-full">
-      <label htmlFor={`newsletter-${onDark ? "dark" : "light"}`} className="sr-only">
+      <label htmlFor={inputId} className="sr-only">
         E-mail
       </label>
       <div className="flex flex-col gap-2 sm:flex-row">
         <input
-          id={`newsletter-${onDark ? "dark" : "light"}`}
+          id={inputId}
           type="email"
           value={email}
           onChange={(e) => {

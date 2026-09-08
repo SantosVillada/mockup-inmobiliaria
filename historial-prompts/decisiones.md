@@ -455,5 +455,24 @@ Usar identificadores tipo `DNN` (ej. `D01`, `D02`) para poder referenciarlas des
 
 ---
 
+## DQA — Decisiones de QA (Agente 08)
+
+> Rango `DQA-NN`. Cada una referencia el estado del mockup y la auditoría contra `docs/`.
+
+### DQA-01 — Guard de agente en P-03 (detalle)
+- **Fecha:** 2026-09-08 · **Tipo:** Robustez
+- **Decisión:** En `app/propiedades/[slug]/page.tsx`, si el agente asociado a la propiedad no existe / no está activo, no se renderizan `PerfilAgente` ni `DetalleContacto` (que dependen de `agente`); el formulario de contacto sigue visible.
+- **Motivo:** Evitar crash (`agente.nombre` sobre `undefined`) cuando los datos reales de Supabase no tengan agente activo para una propiedad. Antes se pasaba `agente={agente!}`.
+
+### DQA-02 — IDs únicos de newsletter
+- **Decisión:** El componente `Newsletter` usa `useId()` para el `id` del input y el `htmlFor` del label.
+- **Motivo:** En Home el `Newsletter` se renderiza 2 veces (CTA final + Footer) y generaba `id="newsletter-dark"` duplicado → label ambigua y HTML inválido.
+
+### DQA-03 — Logo monograma con tokens
+- **Decisión:** El punto dorado del monograma usa `var(--accent-400)` (sobre claro) y `var(--accent-300)` (sobre oscuro), en lugar del hex suelto `#C7A55A`.
+- **Motivo:** Cumplir la regla "tokens, nunca hex sueltos" (DBR-07) y la variante reverso de `docs/branding/logo.md` (punto `--accent-300` sobre oscuro).
+
+---
+
 ## Decisiones futuras (plantilla)
 - [Próxima decisión relevante aquí]

@@ -4,6 +4,7 @@ import { NOMBRE_EMPRESA, TAGLINE } from "@/lib/constants";
 
 export function Monograma({ className, onDark = false }: { className?: string; onDark?: boolean }) {
   const stroke = onDark ? "#FFFFFF" : "currentColor";
+  const dot = onDark ? "var(--accent-300)" : "var(--accent-400)";
   return (
     <svg
       viewBox="0 0 32 30"
@@ -19,7 +20,7 @@ export function Monograma({ className, onDark = false }: { className?: string; o
         strokeLinecap="round"
         strokeLinejoin="round"
       />
-      <circle cx="16" cy="14.5" r="2.4" fill="#C7A55A" />
+      <circle cx="16" cy="14.5" r="2.4" fill={dot} />
     </svg>
   );
 }

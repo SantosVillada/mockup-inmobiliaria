@@ -116,9 +116,11 @@ export default async function DetallePropiedadPage({ params }: PageProps) {
           <aside className="lg:sticky lg:top-24 lg:h-fit">
             <div className="flex flex-col gap-6">
               {agente && (
-                <PerfilAgente agente={agente} propiedad={propiedad} contexto="sidebar" showCtas={false} />
+                <>
+                  <PerfilAgente agente={agente} propiedad={propiedad} contexto="sidebar" showCtas={false} />
+                  <DetalleContacto propiedad={propiedad} agente={agente} />
+                </>
               )}
-              <DetalleContacto propiedad={propiedad} agente={agente!} />
               <div id="contacto" className="rounded-2xl border border-neutral-200 bg-white p-5">
                 <h3 className="mb-4 font-display text-lg font-semibold text-brand-900">Dejanos tu consulta</h3>
                 <FormularioContacto

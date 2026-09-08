@@ -49,6 +49,7 @@ import {
   TreePine,
   TrendingUp,
   Users,
+  User,
   Utensils,
   WashingMachine,
   Waves,
@@ -114,7 +115,7 @@ const ICONS: Record<string, LucideIcon> = {
   linkedin: Globe,
   globe: Globe,
   landmark: Landmark,
-  user: Users,
+  user: User,
 };
 
 interface IconProps {
