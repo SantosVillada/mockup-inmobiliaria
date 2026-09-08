@@ -48,6 +48,46 @@ COMPLETADO (inicialización de coordinación). Pendiente: FASE 1.
 
 ---
 
+## Registro 002 — Setup de Git y GitHub
+
+### Prompt / Instrucción
+El usuario pidió: "instala todo para poder hacer el repositorio en github del proyecto".
+
+### Fecha
+2026-09-08
+
+### Objetivo
+Instalar las herramientas necesarias y dejar el proyecto subido a GitHub.
+
+### Resultado
+- Instalados vía `winget`: **Git 2.55.0**, **GitHub CLI (gh) 2.100.0**, **Node.js v24.19.0**, **npm 11.17.0**.
+- Autenticado `gh` como `SantosVillada`.
+- Repo local inicializado en `mockup-inmobiliaria` (rama `main`).
+- Identidad git configurada: `SantosVillada <scvillada@gmail.com>`.
+- Creado `.gitignore`.
+- Commit inicial `cefe55e` ("chore: init project and historial de prompts").
+- Repo pusheado a `https://github.com/SantosVillada/mockup-inmobiliaria.git` (rama `main`).
+- Se actualizó `decisiones.md` (D04 resuelto, D05, D06).
+
+### Decisiones tomadas
+- Rama por defecto `main`.
+- Identidad git local (repo-scope).
+- Repo remoto apunta a `origin` = `https://github.com/SantosVillada/mockup-inmobiliaria.git`.
+
+### Problemas encontrados
+- El repo `SantosVillada/mockup-inmobiliaria` ya existía en GitHub → no se usó `gh repo create` (falló por nombre duplicado); se agregó el remote y se pusheó directamente.
+
+### Soluciones aplicadas
+- `git remote add origin ...` + `git push -u origin main`.
+
+### Próximo paso
+Ejecutar la **FASE 1**: enviar instrucciones al **Agente UX/UI** (ver Registro 001). Al recibir su entrega, revisarla antes de pasar a Branding.
+
+### Estado
+COMPLETADO.
+
+---
+
 ## Instrucciones para el Agente UX/UI (próximo a intervenir)
 
 Ver también `01-ux-ui.md` para el registro de este agente.
