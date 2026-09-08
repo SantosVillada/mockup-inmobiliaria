@@ -11,8 +11,11 @@ export const TAGLINE = "Encontrá tu morada.";
 export const DESCRIPCION_SITIO =
   "Inmobiliaria premium: casas, departamentos y locales en las mejores zonas. Te acompañamos de punta a punta.";
 
-export const INSTITUCIONAL_WHATSAPP = "5491155550000";
-export const INSTITUCIONAL_WHATSAPP_DISPLAY = "+54 9 11 5555 0000";
+// Número institucional centralizado (DMK-13): configurable por env, con fallback demo.
+export const INSTITUCIONAL_WHATSAPP =
+  process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "5491155550000";
+export const INSTITUCIONAL_WHATSAPP_DISPLAY =
+  process.env.NEXT_PUBLIC_WHATSAPP_DISPLAY ?? "+54 9 11 5555 0000";
 
 export const EMAIL_INSTITUCIONAL = "hola@morada.com.ar";
 export const TELEFONO_INSTITUCIONAL = "+54 9 11 5555 0000";

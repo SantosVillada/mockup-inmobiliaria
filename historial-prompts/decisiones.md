@@ -403,5 +403,57 @@ Usar identificadores tipo `DNN` (ej. `D01`, `D02`) para poder referenciarlas des
 
 ---
 
+## DBK — Decisiones de Backend / Arquitectura futura (Agente 07)
+
+> Rango `DBK-NN`. Cada una referencia los documentos de diseño en `docs/backend/`.
+
+### DBK-01 — Next.js App Router como servidor + Supabase como backend
+- **Fecha:** 2026-09-08 · **Tipo:** Arquitectónica
+- **Decisión:** La app Next.js (App Router) actúa como servidor; **Supabase** (Postgres + Auth + Storage + RLS) como infraestructura de datos/auth. Sin servidor propio.
+- **Motivo:** Moderno, escalable, sin mantener backend; compatible con D03/DFE-02.
+- **Referencia:** `docs/backend/arquitectura.md`.
+
+### DBK-02 — Clientes Supabase y autenticación
+- **Decisión:** Cuatro clientes en `web/lib/supabase/`: `client.ts` (browser), `server.ts` (server + cookies), `admin.ts` (service role, server-only), `middleware.ts` (updateSession). **Auth:** email/password + magic link (Supabase Auth).
+- **Motivo:** Separar entornos (browser/server), mantener sesión vía cookies y reservar `service_role` solo para servidor.
+- **Referencia:** `docs/backend/arquitectura.md`, `docs/backend/auth-roles.md`.
+
+### DBK-03 — Tres roles: admin / asesor / cliente
+- **Decisión:** Roles `admin`, `asesor`, `cliente` en tabla `roles` (con `permisos` JSONB) + columna `usuarios.rol`. Frontend replica permisos en `lib/types/roles.ts` para UI; RLS es la defensa real.
+- **Motivo:** Matriz simple de permisos que cubre gestión, asesoramiento y cliente público.
+- **Referencia:** `docs/backend/auth-roles.md`.
+
+### DBK-04 — `leads` fuente única; `consultas` como vista
+- **Decisión:** `leads` es la **fuente única** de captación (form/WhatsApp/newsletter/visita). `consultas` es una **vista derivada** (`tipo in contacto, visita`) para reportes; se promueve a tabla solo si se necesita historial por usuario/thread.
+- **Motivo:** Evitar duplicación de esquema; separar "captación" de "consulta formal" sin tablas redundantes.
+- **Referencia:** `docs/backend/esquema-sql.md` §4.
+
+### DBK-05 — `clientes` como extensión opcional
+- **Decisión:** Tabla `clientes` (1:1 con `usuarios`) para clientes registrados: tipo de interés, zonas preferidas, presupuesto, newsletter, notas.
+- **Motivo:** Perfil de cliente logueado (guardados/búsquedas/historial) sin tocar `leads`.
+- **Referencia:** `docs/backend/esquema-sql.md` §3.2.
+
+### DBK-06 — RLS: catálogo público, leads anónimo, CRUD admin/asesor
+- **Decisión:** Lectura **pública** de `propiedades`, `agentes`, `zonas`, `amenities`, `config`, `roles`. `leads`: **insert anónimo** + lectura/edición asesor/admin. `usuarios`/`clientes`: propio o admin. CRUD admin en catálogo.
+- **Motivo:** Sitio público sin login + captura anónima de leads + back-office seguro.
+- **Referencia:** `docs/backend/esquema-sql.md` §6.
+
+### DBK-07 — Número institucional de WhatsApp centralizado (env)
+- **Decisión:** `NEXT_PUBLIC_WHATSAPP_NUMBER` en env con fallback al valor demo (`5491155550000`). Aplicado en `lib/constants.ts`, `utils.waLinkGeneral()`, `FormularioVender`, `vender/page.tsx`. También se guarda en tabla `config`.
+- **Motivo:** Aterrizar `DMK-13` (no hardcodear el número en componentes).
+- **Referencia:** `docs/backend/integraciones.md` §1.
+
+### DBK-08 — Lecturas en RSC; mutaciones públicas vía Route Handler; admin vía Server Actions
+- **Decisión:** Lecturas en **Server Components** (`lib/queries/*`). Mutaciones públicas de leads vía **Route Handler** `POST /api/leads` (creado). Mutaciones de admin vía **Server Actions** (con verificación de rol).
+- **Motivo:** Bundle cliente liviano; escritura pública desacoplada; back-office autenticado.
+- **Referencia:** `docs/backend/arquitectura.md` §3.
+
+### DBK-09 — Supabase Storage para imágenes
+- **Decisión:** Buckets `propiedades` y `agentes` (públicos). `propiedades.imagenes` y `agentes.foto` guardan URLs públicas. Placeholders (`picsum`/`pravatar`) se reemplazan por fotos reales.
+- **Motivo:** Escalar assets sin servidor de archivos; RLS de escritura admin/asesor.
+- **Referencia:** `docs/backend/esquema-sql.md` §8, `docs/backend/integraciones.md` §2.
+
+---
+
 ## Decisiones futuras (plantilla)
 - [Próxima decisión relevante aquí]

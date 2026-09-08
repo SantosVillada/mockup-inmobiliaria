@@ -9,6 +9,7 @@ import FormularioVender from "@/components/conversion/FormularioVender";
 import Accordion from "@/components/ui/Accordion";
 import { getPropiedadesDestacadas } from "@/lib/data/propiedades";
 import { waLink, waMensajeVender } from "@/lib/utils";
+import { INSTITUCIONAL_WHATSAPP } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Vender mi propiedad",
@@ -38,7 +39,7 @@ const FAQ = [
 
 export default function VenderPage() {
   const destacadas = getPropiedadesDestacadas().slice(0, 3);
-  const wa = waLink("5491155550000", waMensajeVender());
+  const wa = waLink(INSTITUCIONAL_WHATSAPP, waMensajeVender());
 
   return (
     <>

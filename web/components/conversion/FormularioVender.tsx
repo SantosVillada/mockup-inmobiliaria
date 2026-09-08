@@ -3,7 +3,7 @@
 import { useState, type FormEvent, type ReactNode } from "react";
 import Button from "@/components/ui/Button";
 import Icon, { WhatsAppIcon } from "@/components/ui/Icon";
-import { TIPOS, OPERACIONES, ZONAS } from "@/lib/constants";
+import { TIPOS, OPERACIONES, ZONAS, INSTITUCIONAL_WHATSAPP } from "@/lib/constants";
 import { cn, waLink } from "@/lib/utils";
 
 type Status = "idle" | "loading" | "success";
@@ -54,7 +54,7 @@ export default function FormularioVender({ className }: { className?: string }) 
   }
 
   const waMsg = `Hola, quiero publicar mi propiedad en ${form.zona || "mi zona"}. ¿Cómo lo hacemos?`;
-  const waHref = waLink("5491155550000", waMsg);
+  const waHref = waLink(INSTITUCIONAL_WHATSAPP, waMsg);
 
   return (
     <form onSubmit={handleSubmit} noValidate className={cn("space-y-6", className)}>

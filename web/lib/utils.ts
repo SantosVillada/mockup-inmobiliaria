@@ -1,5 +1,14 @@
 import type { Agente, Moneda, Operacion, Propiedad, TipoPropiedad } from "@/lib/types";
-import { AMENITIES, CARGOS, ESPECIALIDADES, ESTADOS, IDIOMAS, TIPOS, ZONAS } from "@/lib/constants";
+import {
+  AMENITIES,
+  CARGOS,
+  ESPECIALIDADES,
+  ESTADOS,
+  IDIOMAS,
+  INSTITUCIONAL_WHATSAPP,
+  TIPOS,
+  ZONAS,
+} from "@/lib/constants";
 
 export function cn(...classes: (string | false | null | undefined)[]): string {
   return classes.filter(Boolean).join(" ");
@@ -74,7 +83,7 @@ export function waMensajePropiedad(agente: Agente, propiedad: Propiedad): string
 }
 
 export function waLinkGeneral(): string {
-  return waLink("5491155550000", waMensajeGeneral());
+  return waLink(INSTITUCIONAL_WHATSAPP, waMensajeGeneral());
 }
 
 export function waLinkAgente(agente: Agente): string {
