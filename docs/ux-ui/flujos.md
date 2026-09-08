@@ -149,7 +149,35 @@ CTA "Agendar visita" → Modal C-18
 
 ---
 
-## 10. Patrones transversales de interacción
+## 10. Flujo de Favoritos (transversal + P-09)
+
+```
+Cualquier tarjeta de propiedad (C-01) → tocar corazón (C-22)
+   → se guarda en localStorage (slug/id)
+   → el icono se rellena (feedback) y el contador del header se actualiza
+   → el usuario puede revisarlos en P-09 (/favoritos):
+        grid de C-01 con botón "quitar de favoritos"
+   → si no hay guardados: estado EMPTY (DUX-D28)
+        "Todavía no guardaste propiedades" + CTA "Explorar propiedades" (→ P-02)
+   → acción desde P-09: "Consultar por WhatsApp" por varias (C-13, mensaje con lista)
+```
+**Patrón:** persistencia local en el mockup; sin necesidad de login. Con backend real pasa a cuenta de usuario (Fase 3+). El corazón debe tener `aria-label` y `aria-pressed` (accesibilidad).
+
+---
+
+## 11. Flujo de Servicios (P-08)
+
+```
+Nav "Servicios" o sección Home → P-08
+   → grid de tarjetas de servicio (C-23): icono + título + descripción
+   → cada tarjeta tiene CTA "Consultar" / WhatsApp (C-13, mensaje por servicio)
+   → banda final "¿Necesitás asesoramiento?" → CTA primario a P-06 / WhatsApp
+```
+**Patrón:** cada servicio termina en una acción de contacto (un CTA primario por vista, DUX-D26). No es una página informativa "muerta".
+
+---
+
+## 12. Patrones transversales de interacción
 
 | Patrón | Regla |
 |--------|-------|

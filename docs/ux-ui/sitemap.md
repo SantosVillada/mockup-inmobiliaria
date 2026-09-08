@@ -30,13 +30,16 @@ Home (P-01)
 ├── Propiedades (P-02)            [search + filtros]
 │     └── Detalle de Propiedad (P-03)   [galería, agente, CTA, similares]
 │           (feed de similares → vuelve a P-03)
+├── Servicios (P-08)              [qué hace la inmobiliaria + CTA lead]
 ├── Agentes (P-04)
 │     └── Perfil de Agente (P-05)  [bio + sus propiedades]
 ├── Contacto (P-06)               [form + mapa + WhatsApp] (+ FAQ como sección)
 ├── Nosotros / Quiénes somos (P-07)
+├── Favoritos (P-09)              [propiedades guardadas] (persistencia local en mockup)
 └── (posponer) Testimonios → sección en Home y P-03
 └── (posponer) FAQ → sección en P-06
 └── (posponer) Blog → fase posterior (SEO/contenido)
+└── (posponer) Dashboard / login de clientes → depende de backend (Fase 3+)
 ```
 
 ---
@@ -47,16 +50,19 @@ Home (P-01)
 - **Propósito:** primera impresión + **conversión temprana**. Que el visitante entienda qué es el sitio en <5s, encuentre la acción principal (buscar / ver propiedades / contactar) y, si está indeciso, confíe.
 - **Ruta:** `/`
 - **Objetivo de negocio (KPI):** iniciar una búsqueda, ir a propiedades o contactar por WhatsApp.
-- **Bloques (de arriba a abajo):**
-  1. Hero con **barra de búsqueda rápida** (zona, tipo, precio) + CTA primario.
-  2. **Propiedades destacadas** (grid de tarjetas `C-01`).
-  3. **Búsquelas por zona / tipo** (accesos rápidos a P-02 con filtro pre-cargado).
-  4. **Por qué elegirnos** (beneficios / trust signals).
-  5. **Estadísticas** (números de la inmobiliaria).
-  6. **Testimonios** (carrusel `C-12`) — incluye este bloque, NO como página separada.
-  7. **Agentes destacados** (grid de tarjetas `C-02`).
-  8. **CTA final + newsletter** (se dirige a P-06 / WhatsApp).
-- **Nota:** Testimonios viven acá → justifica excluir página propia.
+- **Bloques (de arriba a abajo):** orden pensado para **captar → mostrar → confiar → convertir.**
+  1. **Navbar** (`C-05`) — logo + nav + CTA.
+  2. **Hero principal** — headline claro, alto impacto visual (imagen/fondo) + CTA primario.
+  3. **Buscador de propiedades** (`C-15` / `C-03` mini) — zona, tipo de operación, precio → lleva a P-02 con filtros pre-cargados.
+  4. **Propiedades destacadas** (grid de tarjetas `C-01`).
+  5. **Categorías** (`C-21`) — tiles por tipo (Departamentos, Casas, PH, Locales, Terrenos) que pre-cargan el filtro en P-02.
+  6. **Propiedades recientes** (grid de `C-01` ordenado por fecha de publicación).
+  7. **"Encontrá tu próximo hogar"** (`C-24`) — banda dual: buscador/CTA de compra + CTA de venta (sellers).
+  8. **Agentes destacados** (grid de tarjetas `C-02`).
+  9. **Beneficios de trabajar con la inmobiliaria** (4–6 ítems icono + título + texto + stats `C-19`).
+  10. **CTA de contacto** (`C-17` + `C-13` WhatsApp + `C-18` newsletter) → P-06 / WhatsApp.
+  11. **Footer** (`C-06`).
+- **Nota:** Testimonios viven como bloque de confianza en Home / P-03 → justifica excluir página propia.
 
 ### P-02 — Propiedades (listado + búsqueda/filtros)
 - **Propósito:** **encontrar** la propiedad adecuada mediante filtros y lectura rápida de resultados.
@@ -113,11 +119,33 @@ Home (P-01)
 - **Objetivo:** reafirmar que es una inmobiliaria seria y experta.
 - **Contenido:** misión/visión, **historia**, **valores**, **estadísticas**, **equipo** (link a P-04), **certificaciones/afiliaciones**, breve CTA a P-02/P-06.
 
+### P-08 — Servicios
+- **Propósito:** explicar **todo lo que hace la inmobiliaria** más allá del listado (tasación, administración, compra/venta, alquileres, asesoramiento crediticio/inversión) → autoridad + generación de leads.
+- **Ruta:** `/servicios`
+- **Objetivo:** derivar a un lead (contacto / WhatsApp / "vender mi propiedad").
+- **Contenido:**
+  - **Header de página** + breadcrumb (`C-07`).
+  - Grid de **tarjetas de servicio** (`C-23`): icono + título + descripción breve.
+  - Cada servicio con CTA "Consultar" / "WhatsApp" (`C-13`).
+  - **Banda de CTA** final ("¿Necesitás asesoramiento?" → P-06 / WhatsApp).
+- **Clave UX:** no es solo informativo — cada servicio termina en una acción de contacto (un CTA primario por vista, DUX-D26).
+
+### P-09 — Favoritos
+- **Propósito:** permitir **guardar propiedades** para comparar/revisitar → reduce abandono y favorece el retorno.
+- **Ruta:** `/favoritos`
+- **Objetivo:** re-enganchar al usuario con propiedades que le interesaron (re-contacto / WhatsApp).
+- **Contenido:**
+  - **Header de página** + breadcrumb.
+  - Grid de **tarjetas `C-01`** de propiedades guardadas (con botón "quitar de favoritos").
+  - **Estado vacío** (`DUX-D28`): mensaje "Todavía no guardaste propiedades" + CTA "Explorar propiedades".
+  - CTA "Consultar por WhatsApp por varias" (opcional).
+- **Persistencia:** en el mockup se guarda en **localStorage** (sin sesión); con backend real pasa a sesión de usuario (Fase 3+).
+
 ---
 
 ## Justificación: qué entra y qué no en el primer mockup
 
-### Incluir (7 páginas)
+### Incluir (9 páginas)
 | Página | Justificación |
 |---|---|
 | P-01 Home | Primera impresión y puerta de entrada; concentra la conversión temprana. |
@@ -127,6 +155,8 @@ Home (P-01)
 | P-05 Perfil Agente | Profundiza la relación personal; fácil de derivar de P-04. |
 | P-06 Contacto | Canal de lead directo. Obligatorio. |
 | P-07 Nosotros | Autoridad/confianza corporativa; barato de construir. |
+| P-08 Servicios | Explica el alcance del negocio y genera leads; barato de construir y alto valor de confianza. |
+| P-09 Favoritos | Reduce abandono y favorece el retorno; se puede implementar sin backend (localStorage) en el mockup. |
 
 ### Posponer / excluir (con motivo)
 | Ítem | Motivo | Cuándo lo retomamos |
@@ -140,7 +170,7 @@ Home (P-01)
 ### Futuro (roadmap de páginas, NO del primer mockup)
 - `/blog` y `/blog/:slug` — contenido / SEO.
 - `/propiedades/:slug/solicitar-visita` — agendamiento con backend.
-- `/favoritos` — lista guardada (requiere sesión de usuario).
+- `/favoritos` (con sesión real / backend) — en el mockup se resuelve con `localStorage` (sin backend); con Supabase pasa a cuenta de usuario.
 - `/listado` para un plan de "publicar mi propiedad" (sellers) — ver Agente 06/Marketing.
 
 ---
@@ -150,13 +180,14 @@ Home (P-01)
 En **desktop**:
 1. Inicio (`/`)
 2. Propiedades (`/propiedades`)
-3. Agentes (`/agentes`)
-4. Nosotros (`/nosotros`)
-5. Contacto (`/contacto`)
+3. Servicios (`/servicios`)
+4. Agentes (`/agentes`)
+5. Nosotros (`/nosotros`)
+6. Contacto (`/contacto`)
 
-CTA de header: **"Vender mi propiedad"** (primario) o **"Consultar"** (secundario). Ver `layout.md` para jerarquía.
+Ítems de acción en el header: **"Favoritos"** (icono corazón, contador si hay guardados) + CTA **"Vender mi propiedad"** (primario) o **"Consultar"** (secundario). Ver `layout.md` para jerarquía.
 
-En **mobile**: menú hamburguesa con los mismos ítems + CTA de header como botón prominente.
+En **mobile**: menú hamburguesa con los mismos ítems + "Favoritos" + CTA de header como botón prominente.
 
 ---
 
@@ -171,3 +202,5 @@ En **mobile**: menú hamburguesa con los mismos ítems + CTA de header como bot�
 | P-05 | Perfil de Agente | `agente-perfil` |
 | P-06 | Contacto (+FAQ) | `contacto` |
 | P-07 | Nosotros | `nosotros` |
+| P-08 | Servicios | `servicios` |
+| P-09 | Favoritos | `favoritos` |

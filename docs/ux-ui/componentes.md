@@ -186,16 +186,50 @@ Nunca mostrar una pantalla en blanco. **Empty** → mensaje amigable + botón "L
 
 ---
 
+## Sección H — Categorías, Servicios y Favoritos (ampliación Home / P-08 / P-09)
+
+### C-21 — Tiles de Categorías (Home)
+- **Propósito:** acceso rápido por tipo de propiedad; pre-carga el filtro en P-02.
+- **Contenido:** grid de tiles (Departamentos, Casas, PH, Locales, Terrenos) con icono + nombre + contador opcional.
+- **Ubicación:** P-01 (sección 5).
+- **Estados:** default · hover (elevación) · active (al hacer clic → P-02 con `?tipo=`).
+- **Responsive:** 5 tiles → 3/2 columnas en tablet, 2 columnas o carrusel horizontal en mobile.
+
+### C-22 — Toggle / Tarjeta de Favorito
+- **Propósito:** guardar/desguardar una propiedad; reflejar el estado en tarjeta y en P-09.
+- **Contenido:** icono corazón (relleno = guardado, contorno = no guardado) + contador opcional en el header.
+- **Ubicación:** sobre `C-01` (tarjeta de propiedad), en P-01, P-02, P-03 y P-09.
+- **Estados:** default · hover · activo (guardado) · **loading** (persistencia) · **error** (si falla la persistencia).
+- **Persistencia (mockup):** `localStorage` (lista de `slug`/id) → se conecta a sesión real con backend (Fase 3+).
+
+### C-23 — Tarjeta de Servicio
+- **Propósito:** comunicar un servicio de la inmobiliaria y derivar a contacto.
+- **Contenido:** icono + título + descripción breve + CTA secundario "Consultar" / WhatsApp (`C-13`).
+- **Ubicación:** P-08 (grid).
+- **Estados:** default · hover · skeleton.
+- **Responsive:** 3 columnas desktop, 2 tablet, 1 mobile.
+
+### C-24 — "Encontrá tu próximo hogar" (banda dual)
+- **Propósito:** empujar al usuario indeciso hacia la acción (buscar/comprar) y captar sellers (vender).
+- **Contenido:** imagen/fondo + título + breve copy + **2 CTAs**: primario "Empezá tu búsqueda" (→ P-02) y secundario "Quiero vender mi propiedad" (→ P-06 / vender). Opcional: mini-buscador `C-15`.
+- **Ubicación:** P-01 (sección 7).
+- **Estados:** default · hover en CTAs.
+- **Responsive:** 2 columnas en desktop (copy + CTAs / imagen); apilado en mobile.
+
+---
+
 ## Resumen de componentes por página (para el Agente 03)
 
 | Página | Componentes |
 |--------|-------------|
-| P-01 Home | C-05, C-15, C-01, C-08, C-19, C-12, C-02, C-06, C-13 |
-| P-02 Propiedades | C-05, C-03, C-01, C-08, C-09, C-14, C-06, C-13 |
-| P-03 Detalle | C-05, C-11, C-01, C-02, C-04, C-08, C-18, C-06, C-13, C-17 (sticky) |
+| P-01 Home | C-05, C-15, C-01, C-08, C-21, C-24, C-19, C-12, C-02, C-06, C-13, C-22 |
+| P-02 Propiedades | C-05, C-03, C-01, C-08, C-09, C-14, C-06, C-13, C-22 |
+| P-03 Detalle | C-05, C-11, C-01, C-02, C-04, C-08, C-18, C-06, C-13, C-17 (sticky), C-22 |
 | P-04 Agentes | C-05, C-02, C-06, C-13 |
 | P-05 Perfil | C-05, C-16, C-04, C-01, C-13, C-06 |
 | P-06 Contacto | C-05, C-04, C-07, C-10, C-06, C-13 |
 | P-07 Nosotros | C-05, C-19, C-12, C-02, C-04 (CTA), C-06, C-13 |
+| P-08 Servicios | C-05, C-07, C-23, C-17 (CTA), C-13, C-06 |
+| P-09 Favoritos | C-05, C-07, C-01, C-08, C-22, C-17 (CTA), C-06, C-13 |
 
 > **Próximo paso:** Agente 02 — Branding para paleta, tipografía y estilo visual (aterriza la "calidad visual/modernidad").

@@ -110,25 +110,30 @@ Evitar competir CTAs. El primario siempre responde a la pregunta "¿qué quiero 
 
 Orden pensado para: **captar → mostrar → confiar → convertir.**
 
-1. **Hero** — headline claro + buscador (`C-03` simplificado) + CTA primario "Ver propiedades". Alto impacto visual (imagen/fondo).
-2. **Propiedades destacadas** — grid de 3–6 tarjetas `C-01`.
-3. **Búsqueda por zona / tipo** — tiles de acceso rápido (pre-cargan filtros en P-02).
-4. **Por qué elegirnos** — 3–4 beneficios (icono + título + texto).
-5. **Estadísticas** — 3–4 números grandes (confianza).
-6. **Testimonios** — carrusel `C-12`.
-7. **Agentes destacados** — grid de tarjetas `C-02` (3–4).
-8. **CTA final + newsletter** — dirigir a contacto/WhatsApp, captar e-mail.
+1. **Navbar** (`C-05`) — logo + nav + CTA, sticky (DUX-D20).
+2. **Hero principal** — headline claro + CTA primario "Ver propiedades". Alto impacto visual (imagen/fondo).
+3. **Buscador de propiedades** (`C-15` / `C-03` simplificado) — zona / operación / precio → P-02 con filtros pre-cargados.
+4. **Propiedades destacadas** — grid de 3–6 tarjetas `C-01`.
+5. **Categorías** (`C-21`) — tiles por tipo (Departamentos, Casas, PH, Locales, Terrenos) que pre-cargan el filtro en P-02.
+6. **Propiedades recientes** — grid de tarjetas `C-01` ordenadas por fecha de publicación (más recientes primero).
+7. **"Encontrá tu próximo hogar"** (`C-24`) — banda dual: buscador/CTA de compra + CTA de venta (sellers, va a P-06/vender).
+8. **Agentes destacados** — grid de tarjetas `C-02` (3–4).
+9. **Beneficios de trabajar con la inmobiliaria** — 4–6 beneficios (icono + título + texto) + estadísticas `C-19` (confianza).
+10. **CTA de contacto** — dirigir a contacto/WhatsApp (C-17 + C-13) + newsletter (`C-18`).
+11. **Footer** (`C-06`).
 
 Cada sección usa una **unidad visual repetida** (misma altura de título, espaciado consistente 64–96px entre secciones) → ritmo y coherencia.
+
+> **Nota de responsividad:** las secciones 4, 6 y 9 usan grillas que colapsan a 1 columna en mobile (DUX-D22); la sección 7 se apila (imagen + copy + CTAs) en mobile y se muestra en 2 columnas en desktop.
 
 ---
 
 ## 6. Estructura de páginas interiores (banda superior)
 
-Páginas P-02, P-03, P-04, P-05, P-06, P-07 usan esta cabecera de página:
+Páginas P-02, P-03, P-04, P-05, P-06, P-07, P-08, P-09 usan esta cabecera de página:
 - **Breadcrumb** (`C-07`) — ubicación.
 - **Título H1 + subtítulo** corto.
-- Filtros o controles contextuales según la página.
+- Filtros o controles contextuales según la página (P-02 filtros, P-09 barra de acciones de favoritos).
 
 ---
 
@@ -152,5 +157,11 @@ Páginas P-02, P-03, P-04, P-05, P-06, P-07 usan esta cabecera de página:
 | D25 | Sticky CTA de contacto en P-03 (mobile: barra inferior; desktop: columna). |
 | D26 | Un CTA primario por vista. |
 | D27 | Precio y operación siempre visibles. |
+| D35 | Página de Servicios dedicada (autoridad + lead). |
+| D36 | Favoritos con persistencia local (localStorage) en mockup; grid + estado vacío. |
+| D37 | Sección "Categorías" en Home (tiles por tipo → pre-cargan filtro en P-02). |
+| D38 | Sección "Propiedades recientes" en Home (grid por fecha de publicación). |
+| D39 | Sección "Encontrá tu próximo hogar" (banda dual compra/venta). |
+| D40 | Beneficios de la inmobiliaria como sección de 4–6 ítems + stats. |
 
 > Próximo paso: el **Agente 02 — Branding** definirá paleta exacta, tipografías y estilo visual para aterrizar estos principios.

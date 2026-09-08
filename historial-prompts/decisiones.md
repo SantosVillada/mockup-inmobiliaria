@@ -125,9 +125,34 @@ Usar identificadores tipo `DNN` (ej. `D01`, `D02`) para poder referenciarlas des
 - **Decisión:** Newsletter con un solo campo (e-mail) y confirmación de éxito.
 - **Motivo:** Captura simple; base que profundiza el Agente 06.
 
+### DUX-D35 — Página de Servicios dedicada
+- **Fecha:** 2026-09-08 · **Tipo:** Arquitectura de información
+- **Decisión:** Agregar **P-08 Servicios** (`/servicios`): grid de tarjetas de servicio (`C-23`) con CTA a contacto/WhatsApp; cada servicio deriva en un lead.
+- **Motivo:** Comunica el alcance del negocio (autoridad) y genera leads; no es una página informativa "muerta" (DUX-D26).
+
+### DUX-D36 — Favoritos con persistencia local
+- **Decisión:** Agregar **P-09 Favoritos** (`/favoritos`). En el mockup se guarda en **localStorage** (sin login) y se refleja con el toggle corazón `C-22`; con backend real pasa a cuenta de usuario (Fase 3+). Estado vacío definido (DUX-D28).
+- **Motivo:** Reduce abandono y favorece el retorno sin depender de backend en el mockup.
+
+### DUX-D37 — Sección "Categorías" en Home
+- **Decisión:** Bloque de tiles por tipo (Departamentos, Casas, PH, Locales, Terrenos) (`C-21`) que **pre-carga el filtro** al ir a P-02 (`?tipo=`).
+- **Motivo:** Acelera la búsqueda por intención de tipo; reduce fricción desde el Home.
+
+### DUX-D38 — Sección "Propiedades recientes" en Home
+- **Decisión:** Grid de tarjetas `C-01` con las **más recientes** (orden por fecha de publicación DESC) como bloque independiente.
+- **Motivo:** Refuerza que el catálogo está activo/actualizado y da variedad tras las destacadas.
+
+### DUX-D39 — Sección "Encontrá tu próximo hogar"
+- **Decisión:** Banda dual (`C-24`) con dos CTAs: primario "Empezá tu búsqueda" (→ P-02) y secundario "Quiero vender mi propiedad" (→ P-06 / vender).
+- **Motivo:** Capta tanto al comprador indeciso como al seller en un mismo bloque.
+
+### DUX-D40 — Beneficios de trabajar con la inmobiliaria
+- **Decisión:** Sección de confianza con **4–6 beneficios** (icono + título + texto) + estadísticas (`C-19`). Reemplaza/expande el bloque "Por qué elegirnos".
+- **Motivo:** Construye confianza antes del CTA de conversión.
+
 ### Estructura del sitemap (decisión de alcance)
-- **Decisión:** Primer mockup con **7 páginas**: Home, Propiedades, Detalle, Agentes, Perfil Agente, Contacto, Nosotros. **Testimonios** y **FAQ** como **secciones** (Home / Contacto) y no como páginas; **Blog** pospuesto a fase de contenido; **dashboard/login de clientes** fuera de alcance (depende de backend).
-- **Motivo:** Mínimo suficiente para convertir; evitar navegación muerta y páginas "en construcción".
+- **Decisión:** Mockup con **9 páginas**: Home, Propiedades, Detalle, Servicios, Agentes, Perfil Agente, Contacto, Nosotros, Favoritos. **Testimonios** y **FAQ** como **secciones** (Home / Contacto) y no como páginas; **Blog** pospuesto a fase de contenido; **dashboard/login de clientes** fuera de alcance (depende de backend).
+- **Motivo:** Mínimo suficiente para convertir + cobertura de confianza y retención (Servicios, Favoritos); evitar navegación muerta y páginas "en construcción".
 
 ---
 
