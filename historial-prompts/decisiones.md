@@ -177,5 +177,58 @@ Usar identificadores tipo `DNN` (ej. `D01`, `D02`) para poder referenciarlas des
 
 ---
 
+---
+
+## DPR — Decisiones de Propiedades (Agente 04)
+
+> Rango `DPR-NN`. Cada una referencia los documentos de diseño en `docs/propiedades/`.
+
+### DPR-01 — Modelo de datos orientado a Supabase
+- **Fecha:** 2026-09-08 · **Tipo:** Arquitectónica / Datos
+- **Decisión:** Tabla `propiedades` normalizada: `id` (uuid PK), `slug` único, `titulo`, `descripcion`, `precio`+`moneda`, `operacion`, `tipo`, `zona`/`ciudad`, métricas, `caracteristicas` (jsonb), `imagenes` (jsonb), `agente_id` (FK), `publicado_en`, etc.
+- **Motivo:** Compatibilidad directa con Supabase/backend futuro (D03); JSONB para listas flexibles (amenities/imágenes).
+
+### DPR-02 — Precio numérico + moneda
+- **Decisión:** `precio` es numérico puro (formato del Frontend con `Intl.NumberFormat`). Campo `moneda` (default `ARS`). Si `operacion=alquiler`, el precio es **mensual**.
+- **Motivo:** Independencia de formato; soporta ARS/USD/UYU sin tocar datos.
+
+### DPR-03 — Tipos de propiedad (enum cerrado)
+- **Decisión:** `casa` / `departamento` / `ph` / `local` / `terreno`. Agrupación en filtros: Vivienda (casa, departamento, ph), Comercial (local), Terreno (terreno).
+- **Motivo:** Cobertura mínima del negocio inmobiliario rioplatense + agrupación para filtros y tiles.
+
+### DPR-04 — Semántica de color de badges
+- **Decisión:** Operación (VENTA/ALQUILER) en azul marca; estado premium NUEVO/OPORTUNIDAD en ámbar, EXCLUSIVO en dorado; no disponible (RESERVADO/VENDIDO) en gris. Regla DBR-09 (texto `--accent-600` sobre claro).
+- **Motivo:** Aterrizar `docs/branding/colores.md`; distinguir operación de estado y de disponibilidad.
+
+### DPR-05 — Tarjeta `C-01` (precio/operación siempre visibles)
+- **Decisión:** `C-01` muestra siempre precio y operación sin hover (DUX-D27). 3 variantes: destacada (Home), estándar (grid), mini (compacta). Responsive 1/2/3/4 columnas.
+- **Motivo:** Transparencia y agilidad de lectura; máxima conversión.
+
+### DPR-06 — Filtros por URL params
+- **Decisión:** Los filtros de `C-03` se reflejan en URL params (`?operacion=&tipo=&zona=&precio_min=&precio_max=&ambientes_min=&dormitorios_min=&m2_min=&m2_max=&orden=&page=`). Chips removibles (C-08).
+- **Motivo:** DUX-D31 (shareable / SEO / persistencia al volver del detalle).
+
+### DPR-07 — Slug como URL canónica
+- **Decisión:** `P-03` usa `/propiedades/:slug`; el slug se genera una vez (`slugify(titulo)`) y no cambia al editar el título.
+- **Motivo:** Estabilidad de enlaces y SEO.
+
+### DPR-08 — Zonas normalizadas
+- **Decisión:** Lista controlada de zonas (slug + ciudad) para filtros, tiles y URL params.
+- **Motivo:** Coherencia de datos y filtros; evita variantes libres ("palermo"/"Palermo").
+
+### DPR-09 — Amenities como lista controlada
+- **Decisión:** `caracteristicas` = array de claves de un listado controlado (clave/label/icono), en 4 categorías. Se muestran en detalle y sirven para filtrar (avanzado).
+- **Motivo:** Consistencia, SEO y filtrado eficiente (`@>` en Postgres).
+
+### DPR-10 — Datos demo representativos
+- **Decisión:** 10 propiedades (venta/alquiler, varios tipos y zonas, rangos de precio) en `datos-demo.md`, en español rioplatense.
+- **Motivo:** Poblar el mockup con variedad realista para probar filtros, tarjetas y detalle.
+
+### DPR-11 — Imágenes placeholder
+- **Decisión:** Imágenes deterministas `https://picsum.photos/seed/{slug}-{n}/800/600` con `alt` descriptivo; reemplazables por fotos reales.
+- **Motivo:** Mockup funcional sin asset real; SEO/accesibilidad desde el inicio.
+
+---
+
 ## Decisiones futuras (plantilla)
 - [Próxima decisión relevante aquí]
