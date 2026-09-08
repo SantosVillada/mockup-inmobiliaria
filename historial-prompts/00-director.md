@@ -149,4 +149,42 @@ Ver también `01-ux-ui.md` para el registro de este agente.
 - Sin bloqueos críticos.
 
 ### Estado
-PENDIENTE — el Agente UX/UI debe intervenir.
+COMPLETADO (FASE 1 y posteriores ejecutadas; ver Registro 004).
+
+---
+
+## Registro 004 — FASE 6: Revisión final del Director
+
+### Prompt / Instrucción
+Revisión final del proyecto tras completar las Fases 1–5. Cierre de la coordinación.
+
+### Fecha
+2026-09-08
+
+### Objetivo
+Confirmar que el mockup quedó completo, coherente, compilando y pusheado; dejar el proyecto listo para retomarse.
+
+### Resultado (resumen del recorrido)
+- **FASE 1:** Agente 01 UX/UI (docs/ux-ui) + Agente 02 Branding (docs/branding, marca MORADA).
+- **FASE 2:** Agente 04 Propiedades (docs/propiedades) + Agente 05 Agentes (docs/agentes) + Agente 06 Marketing (docs/marketing).
+- **FASE 3:** Agente 03 Frontend → app Next.js en `web/` (Next 16 + TS + Tailwind v4 + lucide-react) con 8 páginas + not-found; Agente 07 Backend → docs/backend (Supabase, SQL/RLS, auth, integraciones, migración) + código preparatorio en `web/lib/supabase`, `lib/queries`, `app/api/leads`.
+- **FASE 4:** Agente 08 QA → corrigió 4 problemas (guard de detalle, useId newsletter, logo, icono).
+- **FASE 5:** Agente 09 Director Visual → botones pill, tokens WhatsApp, radios normalizados, logo currentColor.
+
+### Verificación final
+- `npm run build` en `web/` → **OK** (compila, TypeScript pasa, 20 rutas generadas).
+- `npm run lint` → **sin errores ni warnings**.
+- Estructura: `docs/` (ux-ui, branding, propiedades, agentes, marketing, backend) + `historial-prompts/` + `web/` (app).
+- Repo pusheado a `https://github.com/SantosVillada/mockup-inmobiliaria.git` (rama `main`).
+
+### Decisiones tomadas
+- El mockup está funcional con datos demo. El backend real (Supabase) queda **documentado y preparado** para conectar en producción.
+- Sugerencias pendientes (no críticas): subir padding de sección a 64/96px, variante "secondary on-dark", iconos de redes con SVG de marca, tier de breakpoint 1024–1279, conectar formularios a `POST /api/leads`, crear proyecto Supabase real.
+
+### Próximo paso
+- Opcional: conectar Supabase real y crear panel `/admin`.
+- Opcional: aplicar sugerencias del Director Visual/QA.
+- El proyecto queda retomable en cualquier momento desde `historial-prompts/`.
+
+### Estado
+COMPLETADO.
