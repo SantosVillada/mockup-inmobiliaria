@@ -50,6 +50,15 @@ Usar identificadores tipo `DNN` (ej. `D01`, `D02`) para poder referenciarlas des
 - **Decisión:** `user.name = SantosVillada`, `user.email = scvillada@gmail.com`.
 - **Motivo:** Identidad configurada a nivel de repo (local) para los commits del proyecto.
 
+## D07 — Protocolo de push obligatorio (confirmación del usuario)
+- **Fecha:** 2026-09-08
+- **Tipo:** Proceso / Gobernanza
+- **Decisión:** Todo agente, al finalizar, debe pedir confirmación al usuario sobre:
+  1. ¿Hacer push de los últimos cambios a GitHub? (Sí / No)
+  2. ¿A la rama `main` o a una nueva rama? (indicar nombre si es nueva)
+- **Motivo:** Evitar pushes no deseados o a la rama equivocada; mantener control del flujo de publicación.
+- **Regla:** Ningún agente hace `git push` sin esta confirmación. Si responde No, se documenta y no se pushea.
+
 ---
 
 ## Decisiones futuras (plantilla)

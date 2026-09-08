@@ -39,6 +39,19 @@ historial-prompts/
 3. Nunca sobrescribir trabajo existente sin analizarlo primero.
 4. No repetir trabajo ya realizado.
 5. Indicar siempre el **próximo paso** y el **agente que debe continuar**.
+6. **Nunca** hacer push a GitHub sin confirmación previa del usuario.
+
+## Regla obligatoria: confirmación de push al finalizar
+
+Cada agente, **antes de cerrar su intervención**, debe preguntar al usuario:
+
+1. **¿Hacer push de los últimos cambios a GitHub?** (Sí / No)
+2. **¿A la rama `main` o a una nueva rama?** (si es nueva, indicar el nombre)
+
+Si el usuario responde que **No**, no se pushea nada y se deja el estado documentado.
+Si responde **Sí**, se confirma la rama destino antes de pushear.
+
+Ningún agente debe hacer `git push` sin esta confirmación.
 
 ## Formato de registro por agente
 

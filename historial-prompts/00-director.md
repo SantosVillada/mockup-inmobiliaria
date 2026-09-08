@@ -88,6 +88,35 @@ COMPLETADO.
 
 ---
 
+## Registro 003 — Protocolo de push obligatorio
+
+### Prompt / Instrucción
+El usuario pidió: "haz que todos los agentes me pidan confirmar al finalizar si quiero hacer push a github de los últimos cambios y si en la main branch o en una nueva".
+
+### Fecha
+2026-09-08
+
+### Objetivo
+Establecer una regla global para que ningún agente pushee sin confirmación explícita del usuario.
+
+### Resultado
+- Se agregó la regla en `README.md` (sección "Regla obligatoria: confirmación de push al finalizar").
+- Se documentó como decisión **D07** en `decisiones.md`.
+- Se actualizaron todos los archivos de agentes (`01`–`09`) con el protocolo de finalización.
+
+### Regla adoptada (para todos los agentes)
+Antes de cerrar su intervención, cada agente pregunta:
+1. ¿Push de los últimos cambios a GitHub? (Sí / No)
+2. ¿A la rama `main` o a una nueva rama? (indicar nombre si es nueva)
+
+Si el usuario responde **No** → no se pushea nada.
+Si responde **Sí** → se confirma la rama destino y recién entonces se pushea.
+
+### Estado
+COMPLETADO.
+
+---
+
 ## Instrucciones para el Agente UX/UI (próximo a intervenir)
 
 Ver también `01-ux-ui.md` para el registro de este agente.
