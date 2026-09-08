@@ -230,5 +230,56 @@ Usar identificadores tipo `DNN` (ej. `D01`, `D02`) para poder referenciarlas des
 
 ---
 
+## DAG — Decisiones de Agentes Inmobiliarios (Agente 05)
+
+> Rango `DAG-NN`. Cada una referencia los documentos de diseño en `docs/agentes/`.
+
+### DAG-01 — Modelo de datos de agente orientado a Supabase
+- **Fecha:** 2026-09-08 · **Tipo:** Arquitectónica / Datos
+- **Decisión:** Tabla `agentes` normalizada: `id` (uuid PK), `slug` (único), `nombre`+`apellido`, `email`, `telefono`, `whatsapp` (solo dígitos con código de país), `foto` (3:4), `cargo`, `especialidades` (jsonb), `idiomas` (jsonb), `bio`, `anios_experiencia`, `estadisticas` (jsonb), `zona_cobertura` (jsonb), `redes` (jsonb), `activo`, `orden`, `publicado_en`.
+- **Motivo:** Compatibilidad directa con Supabase/backend (D03); JSONB para listas/objetos flexibles sin migraciones.
+
+### DAG-02 — Slug como URL canónica de P-05
+- **Decisión:** `P-05` usa `/agentes/:slug`. El slug se genera una vez (`slugify(nombre + apellido)`) y no cambia.
+- **Motivo:** Estabilidad de enlaces y SEO (mismo patrón que DPR-07 en propiedades).
+
+### DAG-03 — Especialidades como lista controlada
+- **Decisión:** Lista cerrada de especialidades (clave/label/icono): `residencial`, `venta-departamentos`, `alquileres`, `ph`, `comercial`, `inversion`, `obra-nueva`. Cada agente tiene 1–3.
+- **Motivo:** Etiquetas, filtros y bio consistentes; se mapean a tipos/operación de propiedades.
+
+### DAG-04 — Zonas de cobertura reutilizan zonas normalizadas
+- **Decisión:** `zona_cobertura` usa las mismas claves de zona que `propiedades` (DPR-08). No se inventan zonas.
+- **Motivo:** Coherencia de datos y filtros entre agentes y propiedades.
+
+### DAG-05 — Relación 1:N agentes ↔ propiedades
+- **Decisión:** `propiedades.agente_id` → `agentes.id` (1:N). "Propiedades del agente" = propiedades `disponible = true` ordenadas por `publicado_en DESC`. Estado vacío con mensaje + CTA (DUX-D28).
+- **Motivo:** Definir cómo se listan las propiedades de un agente en `P-05`.
+
+### DAG-06 — Tarjeta `C-02` con 4 variantes
+- **Decisión:** Variantes: **compacta** (mini), **estándar** (grid), **destacada** (Home), **perfil** (sidebar de `P-03`, con stats y CTAs). Un CTA primario (WhatsApp) por tarjeta (DUX-D26).
+- **Motivo:** Adaptar la presentación según contexto sin duplicar componentes.
+
+### DAG-07 — WhatsApp con mensaje pre-cargado (contexto)
+- **Decisión:** `wa.me/{whatsapp}?text={mensaje}` con mensaje que incluye el **nombre del agente** y, si hay propiedad, `titulo`/`codigo`/`zona`. Plantillas por contexto (P-05, P-03, P-04, Home, general).
+- **Motivo:** DUX-D29 (WhatsApp canal principal); el contexto mejora la calidad del lead.
+
+### DAG-08 — Formulario de contacto mínimo en P-05
+- **Decisión:** `C-04` con ≤4 campos (nombre, teléfono/WhatsApp, e-mail opcional, mensaje). Asunto implícito al agente (`agente_id`) y, si viene de P-03, a la propiedad.
+- **Motivo:** DUX-D30 (mínima fricción) + asignación correcta del lead al agente.
+
+### DAG-09 — Datos demo con 5 agentes
+- **Decisión:** 5 agentes rioplatenses. `agt-01`…`agt-04` asignados a las propiedades demo (prop-001..prop-010); `agt-05` (director comercial) sin propiedades para demostrar el estado vacío.
+- **Motivo:** Poblar el mockup y cubrir el edge case de agente sin cartera.
+
+### DAG-10 — Filtros opcionales en P-04
+- **Decisión:** Filtros opcionales por especialidad / idioma / zona de cobertura en el listado de agentes.
+- **Motivo:** Refinar la elección de asesor sin agregar fricción (opcional, no bloqueante).
+
+### DAG-11 — Estadísticas de agente
+- **Decisión:** `anios_experiencia` a nivel superior (stat primario) + `estadisticas` como jsonb (`operaciones_cerradas`, `propiedades_vendidas`, `clientes_atendidos`, `valor_transaccionado`, `satisfaccion`). Se muestran con `C-19`.
+- **Motivo:** Un stat siempre visible + métricas flexibles sin agregar columnas.
+
+---
+
 ## Decisiones futuras (plantilla)
 - [Próxima decisión relevante aquí]
