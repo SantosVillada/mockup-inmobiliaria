@@ -281,5 +281,77 @@ Usar identificadores tipo `DNN` (ej. `D01`, `D02`) para poder referenciarlas des
 
 ---
 
+## DMK — Decisiones de Conversión / Marketing (Agente 06)
+
+> Rango `DMK-NN`. Cada una referencia los documentos de diseño en `docs/marketing/`.
+
+### DMK-01 — Embudo de conversión en 4 etapas
+- **Fecha:** 2026-09-08 · **Tipo:** Estrategia
+- **Decisión:** Embudo en **4 etapas**: Descubrir → Considerar → Decidir → Convertir. Cada página tiene **un objetivo de conversión (KPI)** que la lleva a la siguiente etapa.
+- **Motivo:** Aterrizar la conversión de visitante a cliente con una métrica clara por página.
+- **Referencia:** `docs/marketing/embudo.md`.
+
+### DMK-02 — Un CTA primario por vista (aterrizar `DUX-D26`)
+- **Decisión:** Cada vista tiene **UN CTA primario**; el resto es secundario/terciario. Inventario completo por página (texto, variante, ubicación, destino).
+- **Motivo:** Evitar competencia de acciones y confusión.
+- **Referencia:** `docs/marketing/ctas.md`.
+
+### DMK-03 — WhatsApp como canal principal (número institucional placeholder)
+- **Decisión:** WhatsApp es el CTA de mayor conversión. **Número institucional placeholder `5491155550000`**; el de cada agente es el campo `whatsapp` de su fila. Presente en header, footer, detalle, agentes, perfil y **flotante mobile**.
+- **Motivo:** `DUX-D29`; mínima fricción y máxima conversión.
+- **Referencia:** `docs/marketing/whatsapp.md`.
+
+### DMK-04 — Mensajes pre-cargados por contexto
+- **Decisión:** Mensajes pre-cargados por contexto (general, por propiedad, por agente, sellers), generados por el Frontend con `encodeURIComponent`. Incluyen `{nombre}` del agente y `{titulo}`/`{codigo}`/`{zona}` de la propiedad cuando aplica.
+- **Motivo:** El contexto califica el lead; el usuario no escribe nada.
+- **Referencia:** `docs/marketing/whatsapp.md`.
+
+### DMK-05 — Formulario de contacto mínimo (≤4 campos)
+- **Decisión:** `C-04` con ≤4 campos (nombre, teléfono/WhatsApp, e-mail opcional, mensaje); estados (default/focus/error/loading/success) y éxito rioplatense.
+- **Motivo:** `DUX-D30`; mínima fricción para captar leads.
+- **Referencia:** `docs/marketing/formularios.md`.
+
+### DMK-06 — Formulario "Vender mi propiedad" (sellers)
+- **Decisión:** Formulario seller con datos del propietario (3) + datos de la propiedad (4). **CTA primario = WhatsApp**; el formulario es el camino formal (secundario).
+- **Motivo:** El seller quiere respuesta rápida; el form captura más contexto pero con más esfuerzo.
+- **Referencia:** `docs/marketing/formularios.md` §2, `docs/marketing/vender-propiedad.md`.
+
+### DMK-07 — Newsletter de 1 campo
+- **Decisión:** Newsletter con **1 campo** (e-mail), botón "Suscribirme" y confirmación. Incluye reglas anti-spam y link a política de privacidad.
+- **Motivo:** `DUX-D34`; captura simple.
+- **Referencia:** `docs/marketing/formularios.md` §3.
+
+### DMK-08 — Reserva de visita como modal (`C-18`)
+- **Decisión:** Reserva de visita como **modal en `P-03`** (`DUX-D32`) con fecha/hora + datos mínimos; alternativa "coordinar por WhatsApp".
+- **Motivo:** Intención avanzada sin abandonar la página.
+- **Referencia:** `docs/marketing/formularios.md` §4.
+
+### DMK-09 — Modelo de datos `leads` + estados
+- **Decisión:** Tabla `leads` orientada a Supabase (id, nombre, telefono, whatsapp, email, mensaje, `tipo`, agente_id, propiedad_id, fecha/hora visita, operacion/tipo/zona interés, origen, canal, estado, fechas). **Estados del lead**: `nuevo, contactado, calificado, visitó, cerrado, perdido`.
+- **Motivo:** Persistir todo lo que generan formularios, WhatsApp, newsletter y reservas; compatible con Supabase (`D03`).
+- **Referencia:** `docs/marketing/leads.md`.
+
+### DMK-10 — Mecanismos de captación de leads priorizados
+- **Decisión:** Orden de prioridad de mecanismos de captación: **WhatsApp > formulario de contacto > reserva de visita > newsletter > pedir más info/fotos**. Se miden con `origen`/`canal`.
+- **Motivo:** Enfocar el esfuerzo en los canales de mayor conversión.
+- **Referencia:** `docs/marketing/leads.md` §1, `docs/marketing/embudo.md`.
+
+### DMK-11 — Técnicas de conversión
+- **Decisión:** Confianza (stats `C-19`, agentes con cara, testimonios `C-12`, garantías, transparencia), urgencia/escasez (badges NUEVO/OPORTUNIDAD/EXCLUSIVO, "solo X disponibles" con datos reales), prueba social y copy rioplatense verbo-primero.
+- **Motivo:** Reforzar "acá te resuelven, sin vueltas". Prohibido inventar escasez o usar superlativos vacíos.
+- **Referencia:** `docs/marketing/conversion.md`.
+
+### DMK-12 — Landing "Vender mi propiedad" dedicada
+- **Decisión:** Usar una **landing dedicada** `/vender` (Opción A) para sellers, con refuerzo en Home (Opción B) que enlaza a ella. Estructura: hero, beneficios, cartera, stats, testimonio, cómo funciona, formulario, FAQ, CTA final.
+- **Motivo:** Público distinto (propietario que quiere publicar), mensaje propio y lead de mayor valor.
+- **Referencia:** `docs/marketing/vender-propiedad.md`.
+
+### DMK-13 — Número institucional configurable
+- **Decisión:** El número institucional de WhatsApp (`5491155550000`) es un **placeholder configurable** en backend (tabla `config`/env), no hardcodeado en componentes.
+- **Motivo:** Que el Agente 07 lo centralice; el mockup lo usa como valor demo.
+- **Referencia:** `docs/marketing/whatsapp.md`.
+
+---
+
 ## Decisiones futuras (plantilla)
 - [Próxima decisión relevante aquí]
