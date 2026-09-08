@@ -353,5 +353,55 @@ Usar identificadores tipo `DNN` (ej. `D01`, `D02`) para poder referenciarlas des
 
 ---
 
+## DFE — Decisiones de Frontend (Agente 03)
+
+> Rango `DFE-NN`. Cada una referencia los documentos de diseño en `docs/` y el estado del mockup.
+
+### DFE-01 — Ubicación del proyecto en `web/`
+- **Fecha:** 2026-09-08 · **Tipo:** Arquitectónica / Estructura
+- **Decisión:** `create-next-app` se niega a inicializar en la raíz del repo (existen `docs/`, `historial-prompts/`, `.git`). El proyecto Next.js vive en la subcarpeta **`web/`**.
+- **Motivo:** No contaminar la raíz del repo ni la documentación; mantener `docs/` e `historial-prompts/` intactos. La raíz sigue siendo la fuente de verdad de diseño y coordinación.
+- **Impacto:** El app se corre desde `web/` (`npm run dev/build`); los datos demo de `lib/data/` son la fuente que luego migra el Agente 07.
+
+### DFE-02 — Stack Next.js 16 (App Router) + TS + Tailwind v4 + lucide-react
+- **Decisión:** Next.js 16.3.4 (App Router, Turbopack) + React 19 + TypeScript + **Tailwind CSS v4** (tema vía `@theme` en `globals.css`, sin `tailwind.config`) + **lucide-react** (iconos line).
+- **Motivo:** Stack moderno compatible con backend futuro (D03); Tailwind v4 permite mapear tokens de marca de forma nativa con `@theme`.
+- **Nota:** Se respetaron las breaking changes de Next 16 (`params`/`searchParams` como `Promise`, helpers globales `PageProps`/`LayoutProps`, Suspense para `useSearchParams`).
+
+### DFE-03 — Tema de marca y fuentes
+- **Decisión:** Tokens de `docs/branding/tokens.md` mapeados a `@theme` (colores `brand-*`, `accent-*`, `neutral-*`, semánticos; radios `sm/md/lg/pill`; sombras azules `xs/sm/md/lg`). Fuentes **Sora** (display) e **Inter** (body) cargadas con `next/font/google`.
+- **Motivo:** Una sola fuente de verdad de tokens (DBR-07); tipografía premium-moderna (DBR-03).
+- **Implementación:** `web/app/globals.css` + `web/app/layout.tsx`.
+
+### DFE-04 — Estructura de archivos y alias
+- **Decisión:** `app/` (rutas), `components/` (`ui/`, `layout/`, `propiedades/`, `agentes/`, `conversion/`) y `lib/` (`types`, `constants`, `utils`, `data`). Alias `@/*` → raíz de `web/`. Sin carpeta `src/`.
+- **Motivo:** Organización por dominio de negocio; fácil de mantener y mapear al backend.
+
+### DFE-05 — Datos demo tipados
+- **Decisión:** `lib/types.ts` define `Propiedad`, `Agente`, `Lead`, `Zona`, etc. `lib/data/propiedades.ts` (10) y `lib/data/agentes.ts` (5) copian los datos de `docs/**/datos-demo.md`, tipados y con helpers de acceso.
+- **Motivo:** El mockup consume datos locales tipados; el Agente 07 reemplaza estos helpers por queries a Supabase sin cambiar la interfaz.
+
+### DFE-06 — Imágenes placeholder con `<img>`
+- **Decisión:** Se usan `<img>` con placeholders deterministas (`picsum.photos`, `i.pravatar.cc`). Se desactivó la regla ESLint `@next/next/no-img-element`.
+- **Motivo:** Evitar configurar `images.remotePatterns`/optimización para un mockup; en producción se reemplazan por fotos reales (DPR-11).
+
+### DFE-07 — Filtros y paginación por URL params
+- **Decisión:** P-02 usa URL params (`?q=&operacion=&tipo=&zona=&precio_min=&precio_max=&ambientes_min=&dormitorios_min=&m2_min=&m2_max=&orden=&page=`) (DUX-D31). Filtros en **sidebar sticky** desktop y **drawer** mobile (DUX-D23). Chips removibles de filtros activos.
+- **Motivo:** Shareable/SEO/persistencia al volver del detalle; feedback claro (DUX-D28).
+
+### DFE-08 — Conversión y formularios simulados
+- **Decisión:** Formularios (contacto, vender, newsletter, visita) simulan envío (loading → success) sin backend. WhatsApp (`wa.me/{numero}?text=`) con mensajes pre-cargados por contexto (general / agente / propiedad / sellers) generados en el cliente (DMK-04).
+- **Motivo:** DUX-D29/D30; el Agente 07 conecta la persistencia de leads y centraliza el número institucional (DMK-13).
+
+### DFE-09 — Logo monograma "M"
+- **Decisión:** Componente `Logo` con monograma "M" (dos picos + punto dorado) como SVG y wordmark **MORADA** (Sora 600, mayúsculas, tracking amplio). Variantes claro/oscuro.
+- **Motivo:** Materializa `docs/branding/logo.md` (DBR-04).
+
+### DFE-10 — CTA sticky en Detalle y Perfil (DUX-D25)
+- **Decisión:** P-03 y P-05 usan columna derecha sticky (desktop) con agente + CTAs + formulario; barra fija inferior en mobile con precio + WhatsApp + Contactar/Visita.
+- **Motivo:** El CTA de contacto nunca sale de vista en las vistas de conversión.
+
+---
+
 ## Decisiones futuras (plantilla)
 - [Próxima decisión relevante aquí]
