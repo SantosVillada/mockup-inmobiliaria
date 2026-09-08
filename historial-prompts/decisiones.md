@@ -61,5 +61,75 @@ Usar identificadores tipo `DNN` (ej. `D01`, `D02`) para poder referenciarlas des
 
 ---
 
+## DUX — Decisiones de UX/UI (Agente 01)
+
+> Rango `DUX-D20` en adelante. Cada una referencia los documentos de diseño en `docs/ux-ui/`.
+
+### DUX-D20 — Header sticky
+- **Fecha:** 2026-09-08 · **Tipo:** Visual
+- **Decisión:** El header permanece fijo (sticky) al scrollear para que nunca se pierda la navegación ni el CTA.
+- **Motivo:** Conversión y usabilidad (acción siempre a mano).
+
+### DUX-D21 — Footer único
+- **Decisión:** Un solo footer unificado en todas las páginas (nav, contacto, WhatsApp, redes, newsletter).
+- **Motivo:** Coherencia y punto de re-contacto.
+
+### DUX-D22 — Mobile-first
+- **Decisión:** Diseñar primero para mobile (1 columna) y escalar hacia arriba.
+- **Motivo:** Mayor audiencia móvil y mejor responsive.
+
+### DUX-D23 — Filtros P-02 (sidebar / drawer)
+- **Decisión:** Desktop: filtros en sidebar sticky. Mobile: panel deslizante (drawer) abierto con botón "Filtros".
+- **Motivo:** Aprovechar el espacio en desktop y no tapar resultados en mobile.
+
+### DUX-D24 — Galería P-03
+- **Decisión:** Mobile: carrusel/swipe. Tablet/Desktop: mosaico con miniaturas laterales.
+- **Motivo:** Adaptar la visualización al espacio.
+
+### DUX-D25 — Sticky CTA en Detalle (P-03)
+- **Decisión:** En mobile una barra fija inferior (precio + contacto/WhatsApp); en desktop columna derecha sticky.
+- **Motivo:** El CTA nunca debe salir de vista en la página de conversión.
+
+### DUX-D26 — Un CTA primario por vista
+- **Decisión:** Cada página/sección tiene UN CTA primario; los demás son secundarios/terciarios.
+- **Motivo:** Evitar competencia de acciones y confusión.
+
+### DUX-D27 — Precio y operación siempre visibles
+- **Decisión:** Precio y operación (venta/alquiler) siempre visibles en tarjetas y detalle, sin requerir hover.
+- **Motivo:** Transparencia y agilidad de lectura.
+
+### DUX-D28 — Estados de loading/vacío/error
+- **Decisión:** Todos los componentes definen estados default/hover/focus/active/disabled/loading/empty/error. Nunca mostrar pantalla en blanco.
+- **Motivo:** Robustez y buena experiencia ante datos faltantes/errores.
+
+### DUX-D29 — WhatsApp como canal principal
+- **Decisión:** WhatsApp es el CTA de mayor conversión; siempre con mensaje pre-cargado y presente en header, footer, detalle y flotante en mobile.
+- **Motivo:** Alta conversión en inmobiliarias; mínima fricción.
+
+### DUX-D30 — Formulario de contacto mínimo
+- **Decisión:** Máximo 4 campos (nombre, teléfono/WhatsApp, e-mail opcional, mensaje), validación inline y mensaje de éxito claro.
+- **Motivo:** Reducir fricción para captar leads.
+
+### DUX-D31 — Filtros persistentes por URL
+- **Decisión:** Los filtros de P-02 se reflejan en URL params (`?tipo=&zona=...`) para compartir/SEO y persistir al volver del detalle.
+- **Motivo:** Compartibilidad, SEO y mejor UX.
+
+### DUX-D32 — Agendar visita como modal
+- **Decisión:** La reserva de visita se ofrece como modal (C-18) en P-03, sin abandonar la página.
+- **Motivo:** No perder contexto; intención avanzada.
+
+### DUX-D33 — CTA sticky en P-03
+- **Decisión:** Reforzado en DUX-D25; CTA siempre visible en la página de detalle.
+
+### DUX-D34 — Newsletter de 1 campo
+- **Decisión:** Newsletter con un solo campo (e-mail) y confirmación de éxito.
+- **Motivo:** Captura simple; base que profundiza el Agente 06.
+
+### Estructura del sitemap (decisión de alcance)
+- **Decisión:** Primer mockup con **7 páginas**: Home, Propiedades, Detalle, Agentes, Perfil Agente, Contacto, Nosotros. **Testimonios** y **FAQ** como **secciones** (Home / Contacto) y no como páginas; **Blog** pospuesto a fase de contenido; **dashboard/login de clientes** fuera de alcance (depende de backend).
+- **Motivo:** Mínimo suficiente para convertir; evitar navegación muerta y páginas "en construcción".
+
+---
+
 ## Decisiones futuras (plantilla)
 - [Próxima decisión relevante aquí]
