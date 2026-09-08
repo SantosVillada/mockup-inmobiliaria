@@ -49,7 +49,7 @@ export default function VenderPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-brand-900/75 via-brand-900/70 to-brand-900/85" />
         <Container className="relative py-16 md:py-24">
           <div className="max-w-2xl">
-            <span className="text-[13px] font-semibold uppercase tracking-[0.08em] text-accent-300">¿Tenés una propiedad?</span>
+            <span className="text-sm font-medium text-accent-300">¿Tenés una propiedad?</span>
             <h1 className="mt-3 font-display font-semibold tracking-tight text-[clamp(2.25rem,5vw,3.75rem)] leading-[1.08]">
               Vendé o alquilá tu propiedad, sin vueltas.
             </h1>

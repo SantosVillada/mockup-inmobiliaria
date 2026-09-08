@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import type { Propiedad } from "@/lib/types";
 import { BadgeOperacion, BadgeEstado } from "@/components/ui/Badge";
+import BotonFavorito from "@/components/propiedades/BotonFavorito";
 import Icon from "@/components/ui/Icon";
 import { cn, formatPrecio, getZonaCiudad } from "@/lib/utils";
 
@@ -63,10 +66,11 @@ export default function TarjetaPropiedad({ propiedad, variante = "estandar", cla
             <BadgeOperacion propiedad={propiedad} />
             <BadgeEstado propiedad={propiedad} />
           </div>
+          <BotonFavorito slug={propiedad.slug} className="absolute right-3 top-3" />
         </div>
 
         <div className={cn("p-4", esDestacada && "p-5")}>
-          <p className="text-xs font-medium uppercase tracking-wide text-neutral-500">{getZonaCiudad(propiedad.zona)}</p>
+          <p className="text-xs font-medium text-neutral-500">{getZonaCiudad(propiedad.zona)}</p>
           <h3 className="mt-1.5 font-display font-semibold leading-snug text-brand-900 line-clamp-2">
             {propiedad.titulo}
           </h3>

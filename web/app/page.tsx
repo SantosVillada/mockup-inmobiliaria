@@ -9,7 +9,7 @@ import TarjetaPropiedad from "@/components/propiedades/TarjetaPropiedad";
 import TarjetaAgente from "@/components/agentes/TarjetaAgente";
 import CarruselTestimonios from "@/components/conversion/CarruselTestimonios";
 import Newsletter from "@/components/conversion/Newsletter";
-import { getPropiedadesDestacadas } from "@/lib/data/propiedades";
+import { getPropiedadesDestacadas, getPropiedadesRecientes } from "@/lib/data/propiedades";
 import { getAgentesDestacados } from "@/lib/data/agentes";
 import { waLinkGeneral } from "@/lib/utils";
 
@@ -33,11 +33,12 @@ const TILES = [
 
 export default function HomePage() {
   const destacadas = getPropiedadesDestacadas();
+  const recientes = getPropiedadesRecientes(4);
   const agentes = getAgentesDestacados();
 
   return (
     <>
-      {/* Hero */}
+      {/* Hero + buscador */}
       <section className="relative overflow-hidden bg-brand-900 text-white">
         <img
           src="https://picsum.photos/seed/morada-hero/1600/900"
@@ -47,9 +48,7 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-b from-brand-900/70 via-brand-900/60 to-brand-900/80" />
         <Container className="relative py-16 md:py-24">
           <div className="max-w-2xl">
-            <span className="text-[13px] font-semibold uppercase tracking-[0.08em] text-accent-300">
-              Inmobiliaria premium
-            </span>
+            <span className="text-sm font-medium text-accent-300">Inmobiliaria premium</span>
             <h1 className="mt-3 font-display font-semibold tracking-tight text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.05]">
               Encontrá tu morada.
             </h1>
@@ -92,13 +91,13 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* Búsqueda por zona / tipo */}
+      {/* Categorías */}
       <section className="bg-brand-50 py-14 md:py-20">
         <Container>
           <SectionHeading
             eyebrow="Explorar"
-            title="Buscá por zona o tipo"
-            subtitle="Accesos rápidos para encontrar lo que querés, con los filtros ya aplicados."
+            title="Categorías"
+            subtitle="Accesos rápidos por tipo de propiedad o zona, con los filtros ya aplicados."
           />
           <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
             {TILES.map((tile) => (
@@ -118,7 +117,81 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* Por qué elegirnos */}
+      {/* Propiedades recientes */}
+      <section className="py-14 md:py-20">
+        <Container>
+          <SectionHeading
+            eyebrow="Recién llegadas"
+            title="Propiedades recientes"
+            subtitle="Lo último que se sumó al catálogo, listo para visitar."
+          />
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {recientes.map((prop) => (
+              <TarjetaPropiedad key={prop.id} propiedad={prop} variante="estandar" />
+            ))}
+          </div>
+          <div className="mt-8 text-center">
+            <Button href="/propiedades" variant="secondary">
+              Ver todo el catálogo
+            </Button>
+          </div>
+        </Container>
+      </section>
+
+      {/* Encontrá tu próximo hogar */}
+      <section className="py-14 md:py-20">
+        <Container>
+          <div className="grid overflow-hidden rounded-2xl bg-brand-900 text-white md:grid-cols-2">
+            <div className="relative min-h-[260px]">
+              <img
+                src="https://picsum.photos/seed/morada-hogar/800/900"
+                alt="Tu próximo hogar"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-brand-900/70 to-brand-900/20" />
+            </div>
+            <div className="flex flex-col justify-center p-8 md:p-12">
+              <h2 className="font-display text-[clamp(1.5rem,3vw,2.25rem)] font-semibold leading-tight">
+                Encontrá tu próximo hogar.
+              </h2>
+              <p className="mt-3 max-w-md text-white/75">
+                Empezá tu búsqueda o, si querés vender, contanos y lo hacemos por vos.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Button href="/propiedades" variant="accent" size="lg">
+                  Empezá tu búsqueda
+                </Button>
+                <Button href="/vender" variant="secondary" size="lg" className="border-white/60 text-white hover:bg-white/10">
+                  Quiero vender mi propiedad
+                </Button>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* Agentes destacados */}
+      <section className="bg-neutral-100 py-14 md:py-20">
+        <Container>
+          <SectionHeading
+            eyebrow="Equipo"
+            title="Conocé a tus asesores"
+            subtitle="Cada propiedad tiene un agente real que la conoce de memoria. Elegí con quién hablar."
+          />
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {agentes.map((agente) => (
+              <TarjetaAgente key={agente.id} agente={agente} variante="estandar" />
+            ))}
+          </div>
+          <div className="mt-8 text-center">
+            <Button href="/agentes" variant="secondary">
+              Conocer agentes
+            </Button>
+          </div>
+        </Container>
+      </section>
+
+      {/* Beneficios */}
       <section className="py-14 md:py-20">
         <Container>
           <SectionHeading
@@ -162,27 +235,6 @@ export default function HomePage() {
             align="center"
           />
           <CarruselTestimonios />
-        </Container>
-      </section>
-
-      {/* Agentes destacados */}
-      <section className="bg-neutral-100 py-14 md:py-20">
-        <Container>
-          <SectionHeading
-            eyebrow="Equipo"
-            title="Conocé a tus asesores"
-            subtitle="Cada propiedad tiene un agente real que la conoce de memoria. Elegí con quién hablar."
-          />
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {agentes.map((agente) => (
-              <TarjetaAgente key={agente.id} agente={agente} variante="estandar" />
-            ))}
-          </div>
-          <div className="mt-8 text-center">
-            <Button href="/agentes" variant="secondary">
-              Conocer agentes
-            </Button>
-          </div>
         </Container>
       </section>
 

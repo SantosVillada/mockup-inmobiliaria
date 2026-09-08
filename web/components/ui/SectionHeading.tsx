@@ -25,7 +25,7 @@ export default function SectionHeading({
       {eyebrow && (
         <span
           className={cn(
-            "mb-2 inline-block text-[13px] font-semibold uppercase tracking-[0.08em]",
+            "mb-2 inline-block text-sm font-medium",
             onDark ? "text-accent-300" : "text-accent-600"
           )}
         >

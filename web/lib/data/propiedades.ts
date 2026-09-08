@@ -353,6 +353,12 @@ export function getPropiedadesDestacadas(): Propiedad[] {
   return propiedades.filter((p) => p.destacado);
 }
 
+export function getPropiedadesRecientes(limite = 4): Propiedad[] {
+  return [...propiedades]
+    .sort((a, b) => new Date(b.publicado_en).getTime() - new Date(a.publicado_en).getTime())
+    .slice(0, limite);
+}
+
 export function getPropiedadesPorAgente(agenteId: string): Propiedad[] {
   return propiedades
     .filter((p) => p.agente_id === agenteId && p.disponible)

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
@@ -10,10 +10,17 @@ import Drawer from "@/components/ui/Drawer";
 import Icon from "@/components/ui/Icon";
 import { WhatsAppIcon } from "@/components/ui/Icon";
 import { waLinkGeneral } from "@/lib/utils";
+import { getFavoritos, favoritosServerSnapshot, FAVORITOS_EVENT } from "@/lib/favoritos";
+
+function subscribeFavoritos(callback: () => void) {
+  window.addEventListener(FAVORITOS_EVENT, callback);
+  return () => window.removeEventListener(FAVORITOS_EVENT, callback);
+}
 
 const NAV = [
   { label: "Inicio", href: "/" },
   { label: "Propiedades", href: "/propiedades" },
+  { label: "Servicios", href: "/servicios" },
   { label: "Agentes", href: "/agentes" },
   { label: "Nosotros", href: "/nosotros" },
   { label: "Contacto", href: "/contacto" },
@@ -22,6 +29,8 @@ const NAV = [
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const favoritos = useSyncExternalStore(subscribeFavoritos, getFavoritos, favoritosServerSnapshot);
+  const favoritosCount = favoritos.length;
   const pathname = usePathname();
 
   useEffect(() => {
@@ -64,7 +73,19 @@ export default function Header() {
             })}
           </nav>
 
-          <div className="hidden items-center gap-3 md:flex">
+          <div className="hidden items-center gap-2 md:flex">
+            <Link
+              href="/favoritos"
+              aria-label={`Favoritos (${favoritosCount})`}
+              className="relative inline-flex h-10 w-10 items-center justify-center rounded-full text-neutral-500 hover:bg-neutral-100 hover:text-brand-600 focus-visible:outline-2 focus-visible:outline-accent-400"
+            >
+              <Icon name="heart" size={22} className={cn(favoritosCount > 0 && "fill-current text-brand-600")} />
+              {favoritosCount > 0 && (
+                <span className="absolute -right-1 -top-1 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-accent-400 px-1 text-[11px] font-bold text-brand-900">
+                  {favoritosCount}
+                </span>
+              )}
+            </Link>
             <a
               href={waLinkGeneral()}
               target="_blank"
@@ -103,6 +124,21 @@ export default function Header() {
               {item.label}
             </Link>
           ))}
+          <Link
+            href="/favoritos"
+            onClick={() => setOpen(false)}
+            className="flex items-center justify-between rounded-xl px-4 py-3 text-base font-medium text-neutral-800 hover:bg-neutral-100"
+          >
+            <span className="inline-flex items-center gap-2">
+              <Icon name="heart" size={20} />
+              Favoritos
+            </span>
+            {favoritosCount > 0 && (
+              <span className="inline-flex h-6 min-w-6 items-center justify-center rounded-full bg-accent-400 px-1.5 text-xs font-bold text-brand-900">
+                {favoritosCount}
+              </span>
+            )}
+          </Link>
         </nav>
         <div className="mt-6 flex flex-col gap-3">
           <Button href="/vender" variant="primary" className="w-full">

@@ -14,9 +14,11 @@ import { waLinkGeneral } from "@/lib/utils";
 const NAV = [
   { label: "Inicio", href: "/" },
   { label: "Propiedades", href: "/propiedades" },
+  { label: "Servicios", href: "/servicios" },
   { label: "Agentes", href: "/agentes" },
   { label: "Nosotros", href: "/nosotros" },
   { label: "Contacto", href: "/contacto" },
+  { label: "Favoritos", href: "/favoritos" },
   { label: "Vender mi propiedad", href: "/vender" },
 ];
 
@@ -41,7 +43,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-[0.08em] text-accent-300">Navegación</h3>
+            <h3 className="text-sm font-semibold text-accent-300">Navegación</h3>
             <ul className="mt-4 space-y-2.5 text-sm">
               {NAV.map((item) => (
                 <li key={item.href}>
@@ -54,7 +56,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-[0.08em] text-accent-300">Contacto</h3>
+            <h3 className="text-sm font-semibold text-accent-300">Contacto</h3>
             <ul className="mt-4 space-y-3 text-sm text-white/70">
               <li className="flex items-start gap-2.5">
                 <Icon name="map-pin" size={16} className="mt-0.5 shrink-0 text-accent-300" />
@@ -89,7 +91,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-[0.08em] text-accent-300">Newsletter</h3>
+            <h3 className="text-sm font-semibold text-accent-300">Newsletter</h3>
             <p className="mt-4 text-sm text-white/70">Recibí las nuevas propiedades antes que nadie.</p>
             <div className="mt-4">
               <Newsletter onDark />
